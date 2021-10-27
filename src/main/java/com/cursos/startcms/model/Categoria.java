@@ -11,6 +11,6 @@ public class Categoria {
 	private String nombre;
 	private String descripcion;
 	private Date fecha;
-	private Categoria categoriaSuperior;
+	private long categoriaSuperior;
 	
 }
