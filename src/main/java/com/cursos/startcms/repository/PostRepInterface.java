@@ -1,5 +1,7 @@
 package com.cursos.startcms.repository;
 
-public interface PostRepInterface {
+import com.cursos.startcms.model.Post;
+
+public interface PostRepInterface extends BaseRepository<Post>{
 
 }

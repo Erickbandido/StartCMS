@@ -1,5 +1,7 @@
 package com.cursos.startcms.repository;
 
-public interface UsuarioMetadataRepInterface {
+import com.cursos.startcms.model.UsuarioMetadata;
+
+public interface UsuarioMetadataRepInterface extends BaseRepository<UsuarioMetadata>{
 
 }

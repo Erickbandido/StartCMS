@@ -59,4 +59,10 @@ public class CategoriaRepository implements CategoriaRepInterface {
 		
 		return null;
 	}
+
+	@Override
+	public Categoria findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

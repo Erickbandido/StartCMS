@@ -1,5 +1,7 @@
 package com.cursos.startcms.repository;
 
-public interface ComentarioRepInterface {
+import com.cursos.startcms.model.Comentario;
+
+public interface ComentarioRepInterface extends BaseRepository<Comentario>{
 
 }

@@ -1,5 +1,7 @@
 package com.cursos.startcms.repository;
 
-public interface PermisoRepInterface {
+import com.cursos.startcms.model.Permiso;
+
+public interface PermisoRepInterface extends BaseRepository<Permiso>{
 
 }
