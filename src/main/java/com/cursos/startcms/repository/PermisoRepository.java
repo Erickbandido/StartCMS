@@ -16,14 +16,36 @@ public class PermisoRepository implements PermisoRepInterface{
 
 	@Override
 	public boolean save(Permiso object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into permiso "
+					+ "(nombre) "
+					+ "values('%s')",
+					object.getNombre());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(Permiso object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdPermiso()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update permido "
+				+ "set nombre='%s'"
+				+ "where idComentario='%d'", 
+				object.getNombre(),
+				object.getIdPermiso());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

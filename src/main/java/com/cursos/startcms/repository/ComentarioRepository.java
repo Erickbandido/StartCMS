@@ -16,14 +16,45 @@ public class ComentarioRepository implements ComentarioRepInterface{
 
 	@Override
 	public boolean save(Comentario object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into comentario "
+					+ "(comentario, idPost, idUsuario,respuesta) "
+					+ "values('%s','%d','%d','%s')",
+					object.getComentario(),
+					object.getIdPost(),
+					object.getIdUsuario(),
+					object.getRespuesta());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(Comentario object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdComentario()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update comentario "
+				+ "set comentario='%s', "
+				+ "idPost='%d', "
+				+ "idUsuario='%d', "
+				+ "respuesta='%s'"
+				+ "where idComentario='%d'", 
+				object.getComentario(),
+				object.getIdPost(),
+				object.getIdUsuario(),
+				object.getRespuesta(),
+				object.getIdComentario());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

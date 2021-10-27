@@ -17,14 +17,54 @@ public class PostRepository implements PostRepInterface{
 
 	@Override
 	public boolean save(Post object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into post "
+					+ "(titulo,slug,extracto,imagenDestacada,tipo,idCategoria,idUsuario) "
+					+ "values('%s','%s','%s','%s','%s','%d','%d')",
+					object.getTitulo(),
+					object.getSlug(),
+					object.getExtracto(),
+					object.getImagenDestacada(),
+					object.getTipo(),
+					object.getIdCategoria(),
+					object.getIdUsuario());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(Post object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdPost()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update post "
+				+ "set titulo='%s', "
+				+ "slug='%s', "
+				+ "extracto='%s', "
+				+ "imagenDestacada='%s', "
+				+ "tipo='%s',"
+				+ "idCategoria ='%d', "
+				+ "idUsuario = '%d' "
+				+ "where idPost='%d'", 
+				object.getTitulo(),
+				object.getSlug(),
+				object.getExtracto(),
+				object.getImagenDestacada(),
+				object.getTipo(),
+				object.getIdCategoria(),
+				object.getIdUsuario(),
+				object.getIdPost());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

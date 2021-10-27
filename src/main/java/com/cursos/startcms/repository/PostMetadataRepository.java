@@ -17,14 +17,45 @@ public class PostMetadataRepository implements PostMetadataRepInterface{
 
 	@Override
 	public boolean save(PostMetadata object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into post_metadata "
+					+ "(clave,valor,tipo, idPost) "
+					+ "values('%s','%s','%s','%d')",
+					object.getClave(),
+					object.getValor(),
+					object.getTipo(),
+					object.getIdPost());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(PostMetadata object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdPostMetadata()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update post_metadata "
+				+ "set clave='%s', "
+				+ "valor='%s', "
+				+ "tipo='%s', "
+				+ "idPost='%d'"
+				+ "where idPostMetadata='%d'", 
+				object.getClave(),
+				object.getValor(),
+				object.getTipo(),
+				object.getIdPost(),
+				object.getIdPostMetadata());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

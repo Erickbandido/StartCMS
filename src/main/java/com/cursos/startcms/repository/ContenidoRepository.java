@@ -16,14 +16,42 @@ public class ContenidoRepository implements ContenidoRepInterface{
 
 	@Override
 	public boolean save(Contenido object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into contenido "
+					+ "(tipo, contenido, idPost) "
+					+ "values('%s','%s','%d')",
+					object.getTipo(),
+					object.getContenido(),
+					object.getIdPost());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(Contenido object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdContenido()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update contenido "
+				+ "set tipo='%s', "
+				+ "contenido='%s', "
+				+ "idpost='%d' "
+				+ "where idContenido='%d'", 
+				object.getTipo(),
+				object.getContenido(),
+				object.getIdPost(),
+				object.getIdContenido());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

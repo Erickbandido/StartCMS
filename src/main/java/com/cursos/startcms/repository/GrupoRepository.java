@@ -16,14 +16,36 @@ public class GrupoRepository implements GrupoRepInterface{
 
 	@Override
 	public boolean save(Grupo object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into grupo "
+					+ "(nombre) "
+					+ "values('%s')",
+					object.getNombre());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(Grupo object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdGrupo()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update grupo "
+				+ "set nombre='%s'"
+				+ "where idGrupo='%d'", 
+				object.getNombre(),
+				object.getIdGrupo());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

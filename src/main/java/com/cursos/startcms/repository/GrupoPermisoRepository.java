@@ -17,13 +17,41 @@ public class GrupoPermisoRepository implements GrupoPermisoRepInterface{
 
 	@Override
 	public boolean save(GrupoPermiso object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into grupo_permiso "
+					+ "(idGrupo, idPermiso) "
+					+ "values('%d','%d')",
+					object.getIdGrupo(),
+					object.getIdPermiso());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(GrupoPermiso object) {
-		// TODO Auto-generated method stub
+//		if ((object.getIdGrupo()!=0)||(object.getIdPermiso()!=0)) {
+//			return false;
+//		}
+//		try {
+//		String sql = String.format("update grupo_permiso "
+//				+ "set idGrupo='%d', "
+//				+ "id='%d', "
+//				+ "idpost='%d' "
+//				+ "where idContenido='%d'", 
+//				object.getTipo(),
+//				object.getContenido(),
+//				object.getIdPost(),
+//				object.getIdContenido());
+//		jdbcTemplate.execute(sql);
+//		return true;
+//		}
+//		catch (Exception e) {
+//			return false;
+//		}
 		return false;
 	}
 

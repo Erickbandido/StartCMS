@@ -17,14 +17,45 @@ public class UsuarioMetadataRepository implements UsuarioMetadataRepInterface{
 
 	@Override
 	public boolean save(UsuarioMetadata object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into usuario_metadata "
+					+ "(clave,valor,tipo,idUsuario) "
+					+ "values('%s','%s','%s','%d')",
+					object.getClave(),
+					object.getValor(),
+					object.getTipo(),
+					object.getIdUsuario());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(UsuarioMetadata object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdUsuarioMetadata()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update usuario_metadata "
+				+ "set clave='%s', "
+				+ "valor='%s', "
+				+ "tipo='%s', "
+				+ "idUsuario='%d' "
+				+ "where idUsuarioMetadata='%d'", 
+				object.getClave(),
+				object.getValor(),
+				object.getTipo(),
+				object.getIdUsuario(),
+				object.getIdUsuarioMetadata());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

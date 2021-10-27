@@ -17,14 +17,48 @@ public class UsuarioRepository implements UsuarioRepInterface{
 
 	@Override
 	public boolean save(Usuario object) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			String sql = String.format("insert into usuario "
+					+ "(nombre,apellido,contrasenia,correo,idGrupo) "
+					+ "values('%s','%s','%s','%s','%d')",
+					object.getNombre(),
+					object.getApellido(),
+					object.getContrasenia(),
+					object.getCorreo(),
+					object.getIdGrupo());
+			jdbcTemplate.execute(sql);
+			return true;}
+			catch (Exception e){
+				
+				return false;
+			}
 	}
 
 	@Override
 	public boolean update(Usuario object) {
-		// TODO Auto-generated method stub
-		return false;
+		if (object.getIdUsuario()!=0) {
+			return false;
+		}
+		try {
+		String sql = String.format("update usuario_metadata "
+				+ "set nombre='%s', "
+				+ "apellido='%s', "
+				+ "contrasenia='%s', "
+				+ "correo='%s', "
+				+ "idGrupo='%d'"
+				+ "where idUsuario='%d'", 
+				object.getNombre(),
+				object.getApellido(),
+				object.getContrasenia(),
+				object.getCorreo(),
+				object.getIdGrupo(),
+				object.getIdUsuario());
+		jdbcTemplate.execute(sql);
+		return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	@Override

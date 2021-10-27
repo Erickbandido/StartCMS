@@ -16,14 +16,14 @@ public class CategoriaRepository implements CategoriaRepInterface {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public boolean save(Categoria categoria) {
+	public boolean save(Categoria object) {
 		try {
 		String sql = String.format("insert into categoria "
 				+ "(nombre, descripcion, categoriaSuperior) "
 				+ "values('%s','%s','%d')",
-				categoria.getNombre(),
-				categoria.getDescripcion(),
-				categoria.getCategoriaSuperior());
+				object.getNombre(),
+				object.getDescripcion(),
+				object.getCategoriaSuperior());
 		jdbcTemplate.execute(sql);
 		return true;}
 		catch (Exception e){
@@ -33,18 +33,18 @@ public class CategoriaRepository implements CategoriaRepInterface {
 	}
 
 	@Override
-	public boolean update(Categoria categoria) {
-		if (categoria.getIdCategoria()!=0) {
+	public boolean update(Categoria object) {
+		if (object.getIdCategoria()!=0) {
 			return false;
 		}
 		try {
 			String sql = String.format("update categoria "
 					+ "set nombre='%s', descripcion='%s', categoriaSuperior='%d'"
 					+ "where idCategoria='%d'", 
-					categoria.getNombre(),
-					categoria.getDescripcion(), 
-					categoria.getCategoriaSuperior(),
-					categoria.getIdCategoria());
+					object.getNombre(),
+					object.getDescripcion(), 
+					object.getCategoriaSuperior(),
+					object.getIdCategoria());
 			jdbcTemplate.execute(sql);
 			return true;
 		}

@@ -8,5 +8,5 @@ public class UsuarioMetadata {
 	private String clave;
 	private String valor;
 	private String tipo;
-	private long iUsuario;
+	private long idUsuario;
 }
