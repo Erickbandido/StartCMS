@@ -1,6 +1,6 @@
 package com.cursos.startcms.mapper;
 
-import com.bytecode.tratcms.model.Usuario;
+import com.cursos.startcms.model.Usuario;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ public class UsuarioMapper implements RowMapper<Usuario> {
     public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException {
         Usuario usuario = new Usuario();
         usuario.setApellido(rs.getString("Apellido"));
-        usuario.setContrasena(rs.getString("Contrasena"));
+        usuario.setContrasenia(rs.getString("Contrasena"));
         usuario.setCorreo(rs.getString("Correo"));
         usuario.setIdGrupo(rs.getInt("IdGrupo"));
         usuario.setIdUsuario(rs.getInt("IdUsuario"));

@@ -1,6 +1,6 @@
 package com.cursos.startcms.mapper;
 
-import com.bytecode.tratcms.model.Post;
+import com.cursos.startcms.model.Post;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ public class PostMapper implements RowMapper<Post> {
     @Override
     public Post mapRow(ResultSet rs, int rowNum) throws SQLException {
         Post post = new Post();
-        post.setCategoria(rs.getInt("Categoria"));
+        post.setIdCategoria(rs.getInt("Categoria"));
         post.setExtracto(rs.getString("Extracto"));
         post.setTitulo(rs.getString("Titulo"));
         post.setSlug(rs.getString("Slug"));

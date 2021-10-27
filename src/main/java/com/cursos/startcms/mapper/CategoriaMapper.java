@@ -1,6 +1,6 @@
 package com.cursos.startcms.mapper;
 
-import com.bytecode.tratcms.model.Categoria;
+import com.cursos.startcms.model.Categoria;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ public class CategoriaMapper implements RowMapper<Categoria> {
     public Categoria mapRow(ResultSet rs, int rowNum) throws SQLException {
         Categoria categoria = new Categoria();
 
-        categoria.setCategoriaSuperiorior(rs.getInt("CategoriaSuperior"));
+        categoria.setCategoriaSuperior(rs.getInt("CategoriaSuperior"));
         categoria.setDescripcion(rs.getString("Descripcion"));
         categoria.setFecha(rs.getDate("Fecha"));
         categoria.setIdCategoria(rs.getInt("IdCategoria"));

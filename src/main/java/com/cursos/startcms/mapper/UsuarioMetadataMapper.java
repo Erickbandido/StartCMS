@@ -1,6 +1,6 @@
 package com.cursos.startcms.mapper;
 
-import com.bytecode.tratcms.model.UsuarioMetadata;
+import com.cursos.startcms.model.UsuarioMetadata;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

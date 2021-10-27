@@ -1,6 +1,6 @@
 package com.cursos.startcms.mapper;
 
-import com.bytecode.tratcms.model.Permiso;
+import com.cursos.startcms.model.Permiso;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,6 +1,6 @@
 package com.cursos.startcms.mapper;
 
-import com.bytecode.tratcms.model.Comentario;
+import com.cursos.startcms.model.Comentario;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
